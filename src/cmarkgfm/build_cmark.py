@@ -10,12 +10,12 @@ import distutils.dist
 import cffi
 
 
-# The cmark sources live under third_party/cmark (vnotex/cmark). VNote bakes
+# The cmark sources live under libs/cmark (our fork of vnotex/cmark). VNote bakes
 # the GitHub extensions plus math/mark/footnotes into the core, so there is no
 # extensions/ directory to compile.
 HERE = os.path.dirname(os.path.abspath(__file__))
 PACKAGE_ROOT = os.path.abspath(os.path.join(HERE, '../../'))
-SRC_DIR = os.path.join(PACKAGE_ROOT, 'third_party/cmark/src')
+SRC_DIR = os.path.join(PACKAGE_ROOT, 'libs/cmark/src')
 # Generated headers that CMake would normally emit (cmark_export.h,
 # cmark_version.h); vnotex/cmark checks in the generated scanner sources.
 GENERATED_SRC_DIR = os.path.join(PACKAGE_ROOT, 'generated/vnotex')
@@ -79,4 +79,16 @@ ffibuilder.set_source(
 
 
 if __name__ == "__main__":
-    ffibuilder.compile(verbose=True)
+    # In-place development build. cffi mirrors absolute source paths into the
+    # build directory, so build in a temp dir and copy only the extension back.
+    import shutil
+    import tempfile
+
+    build_dir = tempfile.mkdtemp(prefix="cmarkgfm-build-")
+    try:
+        output = ffibuilder.compile(tmpdir=build_dir, verbose=True)
+        target = os.path.join(HERE, os.path.basename(output))
+        shutil.copy2(output, target)
+        print("built:", target)
+    finally:
+        shutil.rmtree(build_dir, ignore_errors=True)

@@ -37,7 +37,7 @@ def regenerate(session):
     session.run(shutil.rmtree, 'build', ignore_errors=True)
     session.run(os.makedirs, 'build')
     session.chdir('build')
-    session.run('cmake', '../third_party/cmark')
+    session.run('cmake', '../libs/cmark')
     session.run(shutil.copy, 'src/cmark-gfm_export.h', output_dir)
     session.run(shutil.copy, 'src/cmark-gfm_version.h', output_dir)
     session.run(shutil.copy, 'src/config.h', output_dir)

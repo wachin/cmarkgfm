@@ -19,3 +19,7 @@ __pycache__/
 # cffi in-place build leftovers
 src/cmarkgfm/_cmark.c
 src/cmarkgfm/_cmark.o
+
+# in-place cffi build leftovers
+*.o
+src/home/

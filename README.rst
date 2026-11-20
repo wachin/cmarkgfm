@@ -126,7 +126,7 @@ License
 -------
 
 This project is under the MIT License. It includes components under differing
-copyright under the ``third_party`` directory in this source tree.
+copyright under the ``libs`` directory in this source tree.
 
 Fork notes (marktux)
 ====================
@@ -134,7 +134,7 @@ Fork notes (marktux)
 This is marktux's fork of `cmarkgfm <https://github.com/theacodes/cmarkgfm>`_.
 It binds **vnotex/cmark**, VNote's fork of cmark (CommonMark 0.31.2 plus
 GitHub's extensions and VNote's own math/mark/front-matter/alert/TOC nodes),
-pinned as the ``third_party/cmark`` submodule.
+pinned as the ``libs/cmark`` submodule.
 
 Differences from upstream:
 

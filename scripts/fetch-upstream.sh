@@ -3,7 +3,7 @@
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-cmark="$here/third_party/cmark"
+cmark="$here/libs/cmark"
 upstream_url="https://github.com/vnotex/cmark"
 
 if ! git -C "$cmark" remote get-url upstream >/dev/null 2>&1; then
