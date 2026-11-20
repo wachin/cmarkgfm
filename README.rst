@@ -138,8 +138,9 @@ pinned as the ``third_party/cmark`` submodule.
 
 Differences from upstream:
 
-* The parser is pinned to ``vnotex/cmark`` (commit ``6148f31``), so parsing and
-  node extents match VNote rather than cmark-gfm 0.29.
+* The parser is our fork of ``vnotex/cmark`` (``github.com/wachin/cmark``),
+  pinned at ``6148f31``; parsing and node extents match VNote. See
+  ``MAINTENANCE.md`` for the upstream-review workflow.
 * Extensions are baked into the core: the ``cmark_*_syntax_extension`` API is
   gone and ``markdown_to_html_with_extensions()`` ignores its ``extensions``
   argument.
