@@ -1,18 +1,17 @@
 #ifndef CMARK_MODULE_H
 #define CMARK_MODULE_H
 
+/* Standalone build of vnotex/cmark: it has no extension system, so only the
+ * core header is needed. CMARK_STATIC_DEFINE is supplied by the build. */
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define CMARKEXTENSIONS_STATIC_DEFINE
-
-#include "cmark-gfm.h"
-#include "cmark-gfm-extension_api.h"
-#include "cmark-gfm-core-extensions.h"
+#include "cmark.h"
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif
+#endif /* CMARK_MODULE_H */

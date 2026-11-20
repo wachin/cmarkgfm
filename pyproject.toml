@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cmarkgfm"
 version = "2025.10.22"
-description = "Minimal bindings to GitHub's fork of cmark"
+description = "Python bindings to vnotex/cmark (VNote's cmark fork)"
 readme = "README.rst"
 requires-python = ">=3.9"
 license = "MIT"

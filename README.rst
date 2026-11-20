@@ -127,3 +127,34 @@ License
 
 This project is under the MIT License. It includes components under differing
 copyright under the ``third_party`` directory in this source tree.
+
+Fork notes (marktux)
+====================
+
+This is marktux's fork of `cmarkgfm <https://github.com/theacodes/cmarkgfm>`_.
+It binds **vnotex/cmark**, VNote's fork of cmark (CommonMark 0.31.2 plus
+GitHub's extensions and VNote's own math/mark/front-matter/alert/TOC nodes),
+pinned as the ``third_party/cmark`` submodule.
+
+Differences from upstream:
+
+* The parser is pinned to ``vnotex/cmark`` (commit ``6148f31``), so parsing and
+  node extents match VNote rather than cmark-gfm 0.29.
+* Extensions are baked into the core: the ``cmark_*_syntax_extension`` API is
+  gone and ``markdown_to_html_with_extensions()`` ignores its ``extensions``
+  argument.
+* Parsing returns a real tree: ``parse_document()`` yields a ``Document`` with
+  ``Node.children()`` / ``Node.walk()``, positions, payload getters and
+  ``render_html()`` / ``render_xml()``.
+* VNote's source-syntax metadata is exposed: ``Node.syntax_extent`` and
+  ``Node.syntax_spans()`` give the exact delimiters (``**``, backticks, link
+  brackets) needed by a syntax highlighter. Parse with
+  ``Options.CMARK_OPT_HIGHLIGHT`` (positions + syntax spans) to enable them.
+
+Build in place for development::
+
+    cd src && python3 cmarkgfm/build_cmark.py
+
+or install the package (compiles the bundled parser with cffi)::
+
+    pip install .
